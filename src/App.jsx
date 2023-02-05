@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./App.css";
 // jwt decode time compair pana use pannurom
 import jwtDecode from "jwt-decode";
+import { login } from "./Redux/api";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -10,6 +12,11 @@ function App() {
   const [error, setError] = useState("");
 
   const [user, setUser] = useState(null);
+
+
+  const {error : errordata, userdata }  = useSelector(state => state.user);
+  
+  const dispatch = useDispatch();
 
   console.log(email, password);
 
@@ -65,17 +72,29 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await axios.post("/signin", {
-        email,
-        password,
-      });
 
-      setUser(res.data);
-    } catch (err) {
-      setError(err);
-    }
+
+
+     login(dispatch,{
+      email,
+      password
+     });
+    // try {
+    //   const res = await axios.post("/signin", {
+    //     email,
+    //     password,
+    //   });
+
+    //   setUser(res.data);
+    // } catch (err) {
+    //   setError(err);
+    // }
   };
+
+
+
+ 
+
 
   const deleteUser = async (id) => {
     try {
@@ -92,16 +111,16 @@ function App() {
 
   return (
     <div className="App">
-      {user && user.username ? (
+      {userdata && userdata.username ? (
         <>
          
-         
-              <span key={user._id}> {user.email}</span>
+         <>user is {userdata.username} </>
+              <span key={userdata._id}> {userdata.email}</span>
 
               <div>
-                <span>{user.username}</span>
-                <button onClick={() => deleteUser(user._id)}>
-                  delete {user.username}
+                <span>{userdata.username}</span>
+                <button onClick={() => deleteUser(userdata._id)}>
+                  delete {userdata.username}
                 </button>
               </div>
           
