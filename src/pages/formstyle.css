@@ -1,0 +1,35 @@
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 1px 30%;
+    justify-content: center;
+    text-align: center;
+}
+
+.error{
+    color: red;
+    display: none;
+}
+
+
+/* ==================================================== */
+/* // importent place for validation css  */
+
+input:invalid[focusedval="true"] ~ .error{
+    display: block;
+}
+
+/* ========================================================= */
+
+.input{
+    border-radius: 12px;
+    outline: none;
+    border: 1px solid gray;
+    padding: 1rem;
+}
+
+input:nth-child(1){
+    margin-top: 30px;
+}

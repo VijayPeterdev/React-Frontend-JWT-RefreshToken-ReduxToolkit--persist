@@ -7,6 +7,7 @@ import { store } from "./Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 import {persistStore} from 'redux-persist'
+import FormValidation from './pages/formValidation';
 
 
 let persistor = persistStore(store);
@@ -16,6 +17,7 @@ root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <App />
+      <FormValidation/>
     </PersistGate>
   </Provider>
 );

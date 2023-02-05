@@ -5,6 +5,7 @@ import "./App.css";
 import jwtDecode from "jwt-decode";
 import { login } from "./Redux/api";
 import { useDispatch, useSelector } from "react-redux";
+import FormValidation from "./pages/formValidation";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -148,6 +149,8 @@ function App() {
           />
           <input type="submit" onClick={(e) => handleLogin(e)} />
           {error && <span> {error}</span>}
+
+          <FormValidation/>
         </>
       )}
     </div>
