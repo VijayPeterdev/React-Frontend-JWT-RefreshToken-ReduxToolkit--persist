@@ -6,6 +6,7 @@ import jwtDecode from "jwt-decode";
 import { login } from "./Redux/api";
 import { useDispatch, useSelector } from "react-redux";
 import FormValidation from "./pages/formValidation";
+import CustomHookComponent from "./customHook/CustomHookComponent";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -151,6 +152,7 @@ function App() {
           {error && <span> {error}</span>}
 
           <FormValidation/>
+          <CustomHookComponent/>
         </>
       )}
     </div>

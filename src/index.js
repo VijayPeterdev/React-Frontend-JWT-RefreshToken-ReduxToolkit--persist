@@ -8,6 +8,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import {persistStore} from 'redux-persist'
 import FormValidation from './pages/formValidation';
+import CustomHookComponent from "./customHook/CustomHookComponent";
 
 
 let persistor = persistStore(store);
@@ -18,6 +19,7 @@ root.render(
     <PersistGate persistor={persistor}>
       <App />
       <FormValidation/>
+      <CustomHookComponent/>
     </PersistGate>
   </Provider>
 );
